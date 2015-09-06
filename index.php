@@ -13,6 +13,7 @@
 		</section>
 		
 		<div class="col-sm-12">
+			<?php echo ROOT_URL; ?>
 			<?php if(isset($_GET['halloween_image'])): ?>
 
 				<div class="col-sm-10 col-sm-offset-1 halloween-image">

@@ -2,7 +2,12 @@
 	
 	// Add a constant for our root URL for header redirection. 
 	// remember to change this when pushed to Heroku.
-	define("ROOT_URL", "http://localhost/~telwell/image_processing/");
+	if($_SERVER['REMOTE_ADDR'] == '::1'){
+		define("ROOT_URL", "http://localhost/~telwell/image_processing/");	
+	} else {
+		define("ROOT_URL", "https://fathomless-caverns-7222.herokuapp.com/");
+	}
+	
 
 	// This is our main function for turning an image into a 
 	// 'SPOOKY' image.
