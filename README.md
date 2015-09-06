@@ -1,3 +1,3 @@
 # Image Processor
 
-Created by (Trevor Elwell)[http://trevorelwell.me]
+Created by [Trevor Elwell](http://trevorelwell.me)
