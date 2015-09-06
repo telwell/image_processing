@@ -4,6 +4,8 @@
 	// remember to change this when pushed to Heroku.
 	define("ROOT_URL", "http://localhost/~telwell/image_processing/");
 
+	// This is our main function for turning an image into a 
+	// 'SPOOKY' image.
 	function halloween_format($image_path, $imagine) 
 	{	
 		// At this point the image will already have been 

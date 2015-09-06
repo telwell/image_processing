@@ -1,5 +1,7 @@
 <?php
-    
+    // These need to be added here as well since I'm not including
+    // the header.php file here. I'm not including it becuase then 
+    // the header redirect below would no longer work properly.
     require 'vendor/autoload.php';
     require 'functions.php';
     $imagine = new Imagine\Gd\Imagine();
