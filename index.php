@@ -13,9 +13,9 @@
 		</section>
 		
 		<div class="col-sm-12">
-			<?php echo ROOT_URL; ?>
 			<?php if(isset($_GET['halloween_image'])): ?>
-
+				<h2>WOOOOOO Look at your new SPOOKY image!</h2>
+				<p>Happy (soon-to-be) Halloween!</p>
 				<div class="col-sm-10 col-sm-offset-1 halloween-image">
 					<img src="<?php echo(ROOT_URL); ?>public/<?php echo $_GET['halloween_image']; ?>">
 				</div>
