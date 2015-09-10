@@ -4,47 +4,25 @@
     // the header redirect below would no longer work properly.
     require 'vendor/autoload.php';
     require 'functions.php';
-    $imagine = new Imagine\Gd\Imagine();
+
+    // Since we're using some specific Imagine effects we'll
+    // need to include them directly here as well.
     use Imagine\Effects;
 
+    // Setting the general variables used to make our upload work.
     $target_dir = "public/";
     $naked_file = basename($_FILES["fileToUpload"]["name"]);
     $target_file = $target_dir . $naked_file;
-    $uploadOk = 1;
-    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-    // Check if image file is a actual image or fake image
-    if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
-    }
-    // Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-    // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            halloween_format($naked_file, $imagine);
-            header("Location: ". ROOT_URL . "?halloween_image=halloween_" . $naked_file );
-            die();
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
-    }
+    $has_errors = false;
+    $image_file_type = pathinfo($target_file,PATHINFO_EXTENSION);
+    
+    // Perform our checks on the image. We want to make sure it's an image, 
+    // that the file doesn't already exist on our server, and that it's a valid
+    // image file format.
+    $has_errors = check_valid_image();
+    $has_errors = check_file_exists($target_file);
+    $has_errors = check_valid_file_format($image_file_type); 
+    
+    finalize_image_upload($has_errors, $target_file, $naked_file);
+
 ?>
