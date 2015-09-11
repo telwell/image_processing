@@ -10,4 +10,4 @@ Want to install this on your own system? It's very simple to do! This app only u
 2. Ensure you have the (Imagine)[https://imagine.readthedocs.org/en/latest/] library installed on your system along with the GD library. Heroku makes it really easy by allowing you to add 'ext-gd' to your composer.json file. Learn more about (PHP on Heroku)[https://devcenter.heroku.com/articles/php-support].
 3. Within functions.php you'll need to set the ROOT_URL global variables to be compatible with your local and/or production environments. 
 
-Once you follow those steps you should be good to go! Please email me at [me@trevorelwell.com](mailto:me@trevorelwell.com) with any questions. Good luck!
+Once you follow these steps you should be good to go! Please email me at [me@trevorelwell.com](mailto:me@trevorelwell.com) with any questions. Good luck!
